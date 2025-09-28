@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access & Security - Dokumentasi Perintah Hestia CP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 25px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-link:hover {
+            color: #2980b9;
+        }
+        .back-link::before {
+            content: "← ";
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .command {
+            font-family: monospace;
+            background-color: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #e83e8c;
+        }
+        .category-description {
+            margin-bottom: 25px;
+            color: #7f8c8d;
+            text-align: center;
+            font-style: italic;
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">Kembali ke Beranda</a>
+        
+        <h1>Access & Security</h1>
+        
+        <p class="category-description">Perintah untuk manajemen akses dan keamanan di Hestia Control Panel</p>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Perintah</th>
+                        <th>Fungsi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><span class="command">v-acknowledge-user-notification</span></td>
+                        <td>Konfirmasi notifikasi pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><span class="command">v-add-access-key</span></td>
+                        <td>Menambahkan access key</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><span class="command">v-check-access-key</span></td>
+                        <td>Memeriksa access key</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><span class="command">v-check-api-key</span></td>
+                        <td>Memeriksa API key</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><span class="command">v-delete-access-key</span></td>
+                        <td>Menghapus access key</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><span class="command">v-generate-api-key</span></td>
+                        <td>Generate API key</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><span class="command">v-generate-password-hash</span></td>
+                        <td>Generate hash password</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td><span class="command">v-list-access-key</span></td>
+                        <td>Menampilkan access key</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td><span class="command">v-list-access-keys</span></td>
+                        <td>Menampilkan semua access key</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td><span class="command">v-list-api</span></td>
+                        <td>Menampilkan API</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td><span class="command">v-list-apis</span></td>
+                        <td>Menampilkan semua API</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td><span class="command">v-revoke-api-key</span></td>
+                        <td>Mencabut API key</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <footer>
+            <p>&copy; 2023 Dokumentasi Perintah Hestia CP</p>
+        </footer>
+    </div>
+</body>
+</html>

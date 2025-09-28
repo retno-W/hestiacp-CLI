@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cron Job Management - Dokumentasi Perintah Hestia CP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 25px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-link:hover {
+            color: #2980b9;
+        }
+        .back-link::before {
+            content: "← ";
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .command {
+            font-family: monospace;
+            background-color: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #e83e8c;
+        }
+        .category-description {
+            margin-bottom: 25px;
+            color: #7f8c8d;
+            text-align: center;
+            font-style: italic;
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">Kembali ke Beranda</a>
+        
+        <h1>Cron Job Management</h1>
+        
+        <p class="category-description">Perintah untuk manajemen cron job di Hestia Control Panel</p>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Perintah</th>
+                        <th>Fungsi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><span class="command">v-add-cron-hestia-autoupdate</span></td>
+                        <td>Menambahkan cron auto update</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><span class="command">v-add-cron-job</span></td>
+                        <td>Menambahkan cron job</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><span class="command">v-add-cron-letsencrypt-job</span></td>
+                        <td>Menambahkan cron Let's Encrypt</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><span class="command">v-add-cron-reports</span></td>
+                        <td>Menambahkan cron laporan</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><span class="command">v-add-cron-restart-job</span></td>
+                        <td>Menambahkan cron restart</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><span class="command">v-change-cron-job</span></td>
+                        <td>Mengubah cron job</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><span class="command">v-delete-cron-hestia-autoupdate</span></td>
+                        <td>Menghapus cron auto update</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td><span class="command">v-delete-cron-job</span></td>
+                        <td>Menghapus cron job</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td><span class="command">v-delete-cron-reports</span></td>
+                        <td>Menghapus cron laporan</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td><span class="command">v-delete-cron-restart-job</span></td>
+                        <td>Menghapus cron restart</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td><span class="command">v-list-cron-job</span></td>
+                        <td>Menampilkan cron job</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td><span class="command">v-list-cron-jobs</span></td>
+                        <td>Menampilkan semua cron jobs</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td><span class="command">v-rebuild-cron-jobs</span></td>
+                        <td>Membangun ulang cron jobs</td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td><span class="command">v-restore-cron-job</span></td>
+                        <td>Restore cron job</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td><span class="command">v-restore-cron-job-restic</span></td>
+                        <td>Restore cron dengan restic</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td><span class="command">v-suspend-cron-job</span></td>
+                        <td>Menangguhkan cron job</td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td><span class="command">v-suspend-cron-jobs</span></td>
+                        <td>Menangguhkan semua cron</td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td><span class="command">v-unsuspend-cron-job</span></td>
+                        <td>Mengaktifkan cron job</td>
+                    </tr>
+                    <tr>
+                        <td>19</td>
+                        <td><span class="command">v-unsuspend-cron-jobs</span></td>
+                        <td>Mengaktifkan semua cron</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <footer>
+            <p>&copy; 2023 Dokumentasi Perintah Hestia CP</p>
+        </footer>
+    </div>
+</body>
+</html>

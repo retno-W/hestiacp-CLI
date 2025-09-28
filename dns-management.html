@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNS Management - Dokumentasi Perintah Hestia CP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 25px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-link:hover {
+            color: #2980b9;
+        }
+        .back-link::before {
+            content: "← ";
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .command {
+            font-family: monospace;
+            background-color: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #e83e8c;
+        }
+        .category-description {
+            margin-bottom: 25px;
+            color: #7f8c8d;
+            text-align: center;
+            font-style: italic;
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">Kembali ke Beranda</a>
+        
+        <h1>DNS Management</h1>
+        
+        <p class="category-description">Perintah untuk manajemen DNS di Hestia Control Panel</p>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Perintah</th>
+                        <th>Fungsi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><span class="command">v-add-dns-domain</span></td>
+                        <td>Menambahkan domain DNS</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><span class="command">v-add-dns-on-web-alias</span></td>
+                        <td>Menambahkan DNS untuk alias web</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><span class="command">v-add-dns-record</span></td>
+                        <td>Menambahkan record DNS</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><span class="command">v-add-remote-dns-domain</span></td>
+                        <td>Menambahkan DNS remote</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><span class="command">v-add-remote-dns-host</span></td>
+                        <td>Menambahkan host DNS remote</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><span class="command">v-add-remote-dns-record</span></td>
+                        <td>Menambahkan record DNS remote</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><span class="command">v-change-dns-domain-dnssec</span></td>
+                        <td>Mengubah DNSSEC domain</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td><span class="command">v-change-dns-domain-exp</span></td>
+                        <td>Mengubah expire DNS</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td><span class="command">v-change-dns-domain-ip</span></td>
+                        <td>Mengubah IP DNS domain</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td><span class="command">v-change-dns-domain-soa</span></td>
+                        <td>Mengubah SOA DNS</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td><span class="command">v-change-dns-domain-tpl</span></td>
+                        <td>Mengubah template DNS</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td><span class="command">v-change-dns-domain-ttl</span></td>
+                        <td>Mengubah TTL DNS</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td><span class="command">v-change-dns-record</span></td>
+                        <td>Mengubah record DNS</td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td><span class="command">v-change-dns-record-id</span></td>
+                        <td>Mengubah ID record DNS</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td><span class="command">v-change-remote-dns-domain-exp</span></td>
+                        <td>Mengubah expire DNS remote</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td><span class="command">v-change-remote-dns-domain-soa</span></td>
+                        <td>Mengubah SOA DNS remote</td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td><span class="command">v-change-remote-dns-domain-ttl</span></td>
+                        <td>Mengubah TTL DNS remote</td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td><span class="command">v-delete-dns-domain</span></td>
+                        <td>Menghapus domain DNS</td>
+                    </tr>
+                    <tr>
+                        <td>19</td>
+                        <td><span class="command">v-delete-dns-domains</span></td>
+                        <td>Menghapus semua domain DNS</td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td><span class="command">v-delete-dns-domains-src</span></td>
+                        <td>Menghapus sumber DNS</td>
+                    </tr>
+                    <tr>
+                        <td>21</td>
+                        <td><span class="command">v-delete-dns-on-web-alias</span></td>
+                        <td>Menghapus DNS alias web</td>
+                    </tr>
+                    <tr>
+                        <td>22</td>
+                        <td><span class="command">v-delete-dns-record</span></td>
+                        <td>Menghapus record DNS</td>
+                    </tr>
+                    <tr>
+                        <td>23</td>
+                        <td><span class="command">v-delete-remote-dns-domain</span></td>
+                        <td>Menghapus DNS remote</td>
+                    </tr>
+                    <tr>
+                        <td>24</td>
+                        <td><span class="command">v-delete-remote-dns-domains</span></td>
+                        <td>Menghapus semua DNS remote</td>
+                    </tr>
+                    <tr>
+                        <td>25</td>
+                        <td><span class="command">v-delete-remote-dns-host</span></td>
+                        <td>Menghapus host DNS remote</td>
+                    </tr>
+                    <tr>
+                        <td>26</td>
+                        <td><span class="command">v-delete-remote-dns-record</span></td>
+                        <td>Menghapus record DNS remote</td>
+                    </tr>
+                    <tr>
+                        <td>27</td>
+                        <td><span class="command">v-get-dns-domain-value</span></td>
+                        <td>Mendapatkan nilai DNS domain</td>
+                    </tr>
+                    <tr>
+                        <td>28</td>
+                        <td><span class="command">v-insert-dns-domain</span></td>
+                        <td>Memasukkan domain DNS</td>
+                    </tr>
+                    <tr>
+                        <td>29</td>
+                        <td><span class="command">v-insert-dns-record</span></td>
+                        <td>Memasukkan record DNS</td>
+                    </tr>
+                    <tr>
+                        <td>30</td>
+                        <td><span class="command">v-insert-dns-records</span></td>
+                        <td>Memasukkan multiple record</td>
+                    </tr>
+                    <tr>
+                        <td>31</td>
+                        <td><span class="command">v-list-dns-domain</span></td>
+                        <td>Menampilkan domain DNS</td>
+                    </tr>
+                    <tr>
+                        <td>32</td>
+                        <td><span class="command">v-list-dns-domains</span></td>
+                        <td>Menampilkan semua domain DNS</td>
+                    </tr>
+                    <tr>
+                        <td>33</td>
+                        <td><span class="command">v-list-dns-records</span></td>
+                        <td>Menampilkan record DNS</td>
+                    </tr>
+                    <tr>
+                        <td>34</td>
+                        <td><span class="command">v-list-dns-template</span></td>
+                        <td>Menampilkan template DNS</td>
+                    </tr>
+                    <tr>
+                        <td>35</td>
+                        <td><span class="command">v-list-dns-templates</span></td>
+                        <td>Menampilkan semua template DNS</td>
+                    </tr>
+                    <tr>
+                        <td>36</td>
+                        <td><span class="command">v-list-dnssec-public-key</span></td>
+                        <td>Menampilkan public key DNSSEC</td>
+                    </tr>
+                    <tr>
+                        <td>37</td>
+                        <td><span class="command">v-list-remote-dns-hosts</span></td>
+                        <td>Menampilkan host DNS remote</td>
+                    </tr>
+                    <tr>
+                        <td>38</td>
+                        <td><span class="command">v-rebuild-dns-domain</span></td>
+                        <td>Membangun ulang DNS domain</td>
+                    </tr>
+                    <tr>
+                        <td>39</td>
+                        <td><span class="command">v-rebuild-dns-domains</span></td>
+                        <td>Membangun ulang semua DNS</td>
+                    </tr>
+                    <tr>
+                        <td>40</td>
+                        <td><span class="command">v-restore-dns-domain</span></td>
+                        <td>Restore domain DNS</td>
+                    </tr>
+                    <tr>
+                        <td>41</td>
+                        <td><span class="command">v-restore-dns-domain-restic</span></td>
+                        <td>Restore DNS dengan restic</td>
+                    </tr>
+                    <tr>
+                        <td>42</td>
+                        <td><span class="command">v-suspend-dns-domain</span></td>
+                        <td>Menangguhkan domain DNS</td>
+                    </tr>
+                    <tr>
+                        <td>43</td>
+                        <td><span class="command">v-suspend-dns-domains</span></td>
+                        <td>Menangguhkan semua DNS</td>
+                    </tr>
+                    <tr>
+                        <td>44</td>
+                        <td><span class="command">v-suspend-dns-record</span></td>
+                        <td>Menangguhkan record DNS</td>
+                    </tr>
+                    <tr>
+                        <td>45</td>
+                        <td><span class="command">v-suspend-remote-dns-host</span></td>
+                        <td>Menangguhkan host DNS remote</td>
+                    </tr>
+                    <tr>
+                        <td>46</td>
+                        <td><span class="command">v-sync-dns-cluster</span></td>
+                        <td>Sinkronisasi cluster DNS</td>
+                    </tr>
+                    <tr>
+                        <td>47</td>
+                        <td><span class="command">v-unsuspend-dns-domain</span></td>
+                        <td>Mengaktifkan kembali DNS</td>
+                    </tr>
+                    <tr>
+                        <td>48</td>
+                        <td><span class="command">v-unsuspend-dns-domains</span></td>
+                        <td>Mengaktifkan kembali semua DNS</td>
+                    </tr>
+                    <tr>
+                        <td>49</td>
+                        <td><span class="command">v-unsuspend-dns-record</span></td>
+                        <td>Mengaktifkan kembali record</td>
+                    </tr>
+                    <tr>
+                        <td>50</td>
+                        <td><span class="command">v-unsuspend-remote-dns-host</span></td>
+                        <td>Mengaktifkan host DNS remote</td>
+                    </tr>
+                    <tr>
+                        <td>51</td>
+                        <td><span class="command">v-update-dns-templates</span></td>
+                        <td>Update template DNS</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <footer>
+            <p>&copy; 2023 Dokumentasi Perintah Hestia CP</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Domain Management - Dokumentasi Perintah Hestia CP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 25px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-link:hover {
+            color: #2980b9;
+        }
+        .back-link::before {
+            content: "← ";
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .command {
+            font-family: monospace;
+            background-color: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #e83e8c;
+        }
+        .category-description {
+            margin-bottom: 25px;
+            color: #7f8c8d;
+            text-align: center;
+            font-style: italic;
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">Kembali ke Beranda</a>
+        
+        <h1>Web Domain Management</h1>
+        
+        <p class="category-description">Perintah untuk manajemen domain web di Hestia Control Panel</p>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Perintah</th>
+                        <th>Fungsi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><span class="command">v-add-web-domain</span></td>
+                        <td>Menambahkan domain web</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><span class="command">v-add-web-domain-alias</span></td>
+                        <td>Menambahkan alias domain</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><span class="command">v-add-web-domain-allow-users</span></td>
+                        <td>Mengizinkan akses pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><span class="command">v-add-web-domain-backend</span></td>
+                        <td>Menambahkan backend domain</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><span class="command">v-add-web-domain-ftp</span></td>
+                        <td>Menambahkan akun FTP domain</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><span class="command">v-add-web-domain-httpauth</span></td>
+                        <td>Menambahkan HTTP auth</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><span class="command">v-add-web-domain-proxy</span></td>
+                        <td>Menambahkan proxy domain</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td><span class="command">v-add-web-domain-redirect</span></td>
+                        <td>Menambahkan redirect domain</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td><span class="command">v-add-web-domain-ssl</span></td>
+                        <td>Menambahkan SSL domain</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td><span class="command">v-add-web-domain-ssl-force</span></td>
+                        <td>Memaksa SSL domain</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td><span class="command">v-add-web-domain-ssl-hsts</span></td>
+                        <td>Menambahkan HSTS SSL</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td><span class="command">v-add-web-domain-ssl-preset</span></td>
+                        <td>Menambahkan preset SSL</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td><span class="command">v-add-web-domain-stats</span></td>
+                        <td>Mengaktifkan statistik domain</td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td><span class="command">v-add-web-domain-stats-user</span></td>
+                        <td>Menambahkan user stats</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td><span class="command">v-change-web-domain-backend-tpl</span></td>
+                        <td>Mengubah template backend</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td><span class="command">v-change-web-domain-dirlist</span></td>
+                        <td>Mengubah direktori listing</td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td><span class="command">v-change-web-domain-docroot</span></td>
+                        <td>Mengubah document root</td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td><span class="command">v-change-web-domain-ftp-password</span></td>
+                        <td>Mengubah password FTP</td>
+                    </tr>
+                    <tr>
+                        <td>19</td>
+                        <td><span class="command">v-change-web-domain-ftp-path</span></td>
+                        <td>Mengubah path FTP</td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td><span class="command">v-change-web-domain-httpauth</span></td>
+                        <td>Mengubah HTTP auth</td>
+                    </tr>
+                    <tr>
+                        <td>21</td>
+                        <td><span class="command">v-change-web-domain-ip</span></td>
+                        <td>Mengubah IP domain</td>
+                    </tr>
+                    <tr>
+                        <td>22</td>
+                        <td><span class="command">v-change-web-domain-name</span></td>
+                        <td>Mengubah nama domain</td>
+                    </tr>
+                    <tr>
+                        <td>23</td>
+                        <td><span class="command">v-change-web-domain-proxy-tpl</span></td>
+                        <td>Mengubah template proxy</td>
+                    </tr>
+                    <tr>
+                        <td>24</td>
+                        <td><span class="command">v-change-web-domain-sslcert</span></td>
+                        <td>Mengubah sertifikat SSL</td>
+                    </tr>
+                    <tr>
+                        <td>25</td>
+                        <td><span class="command">v-change-web-domain-sslhome</span></td>
+                        <td>Mengubah home SSL</td>
+                    </tr>
+                    <tr>
+                        <td>26</td>
+                        <td><span class="command">v-change-web-domain-stats</span></td>
+                        <td>Mengubah statistik domain</td>
+                    </tr>
+                    <tr>
+                        <td>27</td>
+                        <td><span class="command">v-change-web-domain-tpl</span></td>
+                        <td>Mengubah template domain</td>
+                    </tr>
+                    <tr>
+                        <td>28</td>
+                        <td><span class="command">v-delete-web-domain</span></td>
+                        <td>Menghapus domain web</td>
+                    </tr>
+                    <tr>
+                        <td>29</td>
+                        <td><span class="command">v-delete-web-domain-alias</span></td>
+                        <td>Menghapus alias domain</td>
+                    </tr>
+                    <tr>
+                        <td>30</td>
+                        <td><span class="command">v-delete-web-domain-allow-users</span></td>
+                        <td>Menghapus akses pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>31</td>
+                        <td><span class="command">v-delete-web-domain-backend</span></td>
+                        <td>Menghapus backend domain</td>
+                    </tr>
+                    <tr>
+                        <td>32</td>
+                        <td><span class="command">v-delete-web-domain-ftp</span></td>
+                        <td>Menghapus FTP domain</td>
+                    </tr>
+                    <tr>
+                        <td>33</td>
+                        <td><span class="command">v-delete-web-domain-httpauth</span></td>
+                        <td>Menghapus HTTP auth</td>
+                    </tr>
+                    <tr>
+                        <td>34</td>
+                        <td><span class="command">v-delete-web-domain-proxy</span></td>
+                        <td>Menghapus proxy domain</td>
+                    </tr>
+                    <tr>
+                        <td>35</td>
+                        <td><span class="command">v-delete-web-domain-redirect</span></td>
+                        <td>Menghapus redirect domain</td>
+                    </tr>
+                    <tr>
+                        <td>36</td>
+                        <td><span class="command">v-delete-web-domain-ssl</span></td>
+                        <td>Menghapus SSL domain</td>
+                    </tr>
+                    <tr>
+                        <td>37</td>
+                        <td><span class="command">v-delete-web-domain-ssl-force</span></td>
+                        <td>Menghapus force SSL</td>
+                    </tr>
+                    <tr>
+                        <td>38</td>
+                        <td><span class="command">v-delete-web-domain-ssl-hsts</span></td>
+                        <td>Menghapus HSTS SSL</td>
+                    </tr>
+                    <tr>
+                        <td>39</td>
+                        <td><span class="command">v-delete-web-domain-stats</span></td>
+                        <td>Menghapus statistik domain</td>
+                    </tr>
+                    <tr>
+                        <td>40</td>
+                        <td><span class="command">v-delete-web-domain-stats-user</span></td>
+                        <td>Menghapus user stats</td>
+                    </tr>
+                    <tr>
+                        <td>41</td>
+                        <td><span class="command">v-delete-web-domains</span></td>
+                        <td>Menghapus semua domain</td>
+                    </tr>
+                    <tr>
+                        <td>42</td>
+                        <td><span class="command">v-list-web-domain</span></td>
+                        <td>Menampilkan domain web</td>
+                    </tr>
+                    <tr>
+                        <td>43</td>
+                        <td><span class="command">v-list-web-domain-accesslog</span></td>
+                        <td>Menampilkan log akses</td>
+                    </tr>
+                    <tr>
+                        <td>44</td>
+                        <td><span class="command">v-list-web-domain-errorlog</span></td>
+                        <td>Menampilkan log error</td>
+                    </tr>
+                    <tr>
+                        <td>45</td>
+                        <td><span class="command">v-list-web-domain-ssl</span></td>
+                        <td>Menampilkan SSL domain</td>
+                    </tr>
+                    <tr>
+                        <td>46</td>
+                        <td><span class="command">v-list-web-domains</span></td>
+                        <td>Menampilkan semua domain</td>
+                    </tr>
+                    <tr>
+                        <td>47</td>
+                        <td><span class="command">v-list-web-stats</span></td>
+                        <td>Menampilkan statistik web</td>
+                    </tr>
+                    <tr>
+                        <td>48</td>
+                        <td><span class="command">v-list-web-templates</span></td>
+                        <td>Menampilkan template web</td>
+                    </tr>
+                    <tr>
+                        <td>49</td>
+                        <td><span class="command">v-list-web-templates-backend</span></td>
+                        <td>Menampilkan template backend</td>
+                    </tr>
+                    <tr>
+                        <td>50</td>
+                        <td><span class="command">v-list-web-templates-proxy</span></td>
+                        <td>Menampilkan template proxy</td>
+                    </tr>
+                    <tr>
+                        <td>51</td>
+                        <td><span class="command">v-rebuild-web-domain</span></td>
+                        <td>Membangun ulang domain</td>
+                    </tr>
+                    <tr>
+                        <td>52</td>
+                        <td><span class="command">v-rebuild-web-domains</span></td>
+                        <td>Membangun ulang semua domain</td>
+                    </tr>
+                    <tr>
+                        <td>53</td>
+                        <td><span class="command">v-suspend-web-domain</span></td>
+                        <td>Menangguhkan domain</td>
+                    </tr>
+                    <tr>
+                        <td>54</td>
+                        <td><span class="command">v-suspend-web-domains</span></td>
+                        <td>Menangguhkan semua domain</td>
+                    </tr>
+                    <tr>
+                        <td>55</td>
+                        <td><span class="command">v-unsuspend-web-domain</span></td>
+                        <td>Mengaktifkan kembali domain</td>
+                    </tr>
+                    <tr>
+                        <td>56</td>
+                        <td><span class="command">v-unsuspend-web-domains</span></td>
+                        <td>Mengaktifkan kembali semua domain</td>
+                    </tr>
+                    <tr>
+                        <td>57</td>
+                        <td><span class="command">v-update-web-domain-disk</span></td>
+                        <td>Update penggunaan disk</td>
+                    </tr>
+                    <tr>
+                        <td>58</td>
+                        <td><span class="command">v-update-web-domain-ssl</span></td>
+                        <td>Update SSL domain</td>
+                    </tr>
+                    <tr>
+                        <td>59</td>
+                        <td><span class="command">v-update-web-domain-stat</span></td>
+                        <td>Update statistik domain</td>
+                    </tr>
+                    <tr>
+                        <td>60</td>
+                        <td><span class="command">v-update-web-domain-traff</span></td>
+                        <td>Update traffic domain</td>
+                    </tr>
+                    <tr>
+                        <td>61</td>
+                        <td><span class="command">v-update-web-domains-disk</span></td>
+                        <td>Update disk semua domain</td>
+                    </tr>
+                    <tr>
+                        <td>62</td>
+                        <td><span class="command">v-update-web-domains-stat</span></td>
+                        <td>Update stats semua domain</td>
+                    </tr>
+                    <tr>
+                        <td>63</td>
+                        <td><span class="command">v-update-web-domains-traff</span></td>
+                        <td>Update traffic semua domain</td>
+                    </tr>
+                    <tr>
+                        <td>64</td>
+                        <td><span class="command">v-update-web-templates</span></td>
+                        <td>Update template web</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <footer>
+            <p>&copy; 2023 Dokumentasi Perintah Hestia CP</p>
+        </footer>
+    </div>
+</body>
+</html>

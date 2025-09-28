@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management - Dokumentasi Perintah Hestia CP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 25px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-link:hover {
+            color: #2980b9;
+        }
+        .back-link::before {
+            content: "← ";
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .command {
+            font-family: monospace;
+            background-color: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #e83e8c;
+        }
+        .category-description {
+            margin-bottom: 25px;
+            color: #7f8c8d;
+            text-align: center;
+            font-style: italic;
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">Kembali ke Beranda</a>
+        
+        <h1>User Management</h1>
+        
+        <p class="category-description">Perintah untuk manajemen pengguna di Hestia Control Panel</p>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Perintah</th>
+                        <th>Fungsi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><span class="command">v-add-user</span></td>
+                        <td>Menambahkan pengguna baru</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><span class="command">v-add-user-2fa</span></td>
+                        <td>Mengaktifkan autentikasi dua faktor</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><span class="command">v-add-user-composer</span></td>
+                        <td>Menginstal Composer untuk pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><span class="command">v-add-user-notification</span></td>
+                        <td>Menambahkan notifikasi pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><span class="command">v-add-user-package</span></td>
+                        <td>Menambahkan paket pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><span class="command">v-add-user-sftp-jail</span></td>
+                        <td>Membuat jail SFTP untuk pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><span class="command">v-add-user-sftp-key</span></td>
+                        <td>Menambahkan kunci SFTP</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td><span class="command">v-add-user-ssh-key</span></td>
+                        <td>Menambahkan kunci SSH pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td><span class="command">v-add-user-wp-cli</span></td>
+                        <td>Menginstal WP-CLI untuk pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td><span class="command">v-change-user-config-value</span></td>
+                        <td>Mengubah nilai konfigurasi pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td><span class="command">v-change-user-contact</span></td>
+                        <td>Mengubah kontak pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td><span class="command">v-change-user-language</span></td>
+                        <td>Mengubah bahasa pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td><span class="command">v-change-user-name</span></td>
+                        <td>Mengubah nama pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td><span class="command">v-change-user-ns</span></td>
+                        <td>Mengubah nameserver pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td><span class="command">v-change-user-package</span></td>
+                        <td>Mengubah paket pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td><span class="command">v-change-user-password</span></td>
+                        <td>Mengubah password pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td><span class="command">v-change-user-php-cli</span></td>
+                        <td>Mengubah versi PHP CLI pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td><span class="command">v-change-user-rkey</span></td>
+                        <td>Mengubah kunci reset pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>19</td>
+                        <td><span class="command">v-change-user-role</span></td>
+                        <td>Mengubah peran pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td><span class="command">v-change-user-shell</span></td>
+                        <td>Mengubah shell pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>21</td>
+                        <td><span class="command">v-change-user-sort-order</span></td>
+                        <td>Mengubah urutan tampil pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>22</td>
+                        <td><span class="command">v-change-user-template</span></td>
+                        <td>Mengubah template pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>23</td>
+                        <td><span class="command">v-change-user-theme</span></td>
+                        <td>Mengubah tema pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>24</td>
+                        <td><span class="command">v-check-user-2fa</span></td>
+                        <td>Memeriksa status 2FA pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>25</td>
+                        <td><span class="command">v-check-user-hash</span></td>
+                        <td>Memeriksa hash pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>26</td>
+                        <td><span class="command">v-check-user-password</span></td>
+                        <td>Memeriksa password pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>27</td>
+                        <td><span class="command">v-copy-user-package</span></td>
+                        <td>Menyalin paket pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>28</td>
+                        <td><span class="command">v-delete-user</span></td>
+                        <td>Menghapus pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>29</td>
+                        <td><span class="command">v-delete-user-2fa</span></td>
+                        <td>Menghapus 2FA pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>30</td>
+                        <td><span class="command">v-delete-user-auth-log</span></td>
+                        <td>Menghapus log autentikasi</td>
+                    </tr>
+                    <tr>
+                        <td>31</td>
+                        <td><span class="command">v-delete-user-backup</span></td>
+                        <td>Menghapus backup pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>32</td>
+                        <td><span class="command">v-delete-user-backup-exclusions</span></td>
+                        <td>Menghapus pengecualian backup</td>
+                    </tr>
+                    <tr>
+                        <td>33</td>
+                        <td><span class="command">v-delete-user-ips</span></td>
+                        <td>Menghapus IP pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>34</td>
+                        <td><span class="command">v-delete-user-log</span></td>
+                        <td>Menghapus log pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>35</td>
+                        <td><span class="command">v-delete-user-notification</span></td>
+                        <td>Menghapus notifikasi pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>36</td>
+                        <td><span class="command">v-delete-user-package</span></td>
+                        <td>Menghapus paket pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>37</td>
+                        <td><span class="command">v-delete-user-sftp-jail</span></td>
+                        <td>Menghapus jail SFTP</td>
+                    </tr>
+                    <tr>
+                        <td>38</td>
+                        <td><span class="command">v-delete-user-ssh-key</span></td>
+                        <td>Menghapus kunci SSH</td>
+                    </tr>
+                    <tr>
+                        <td>39</td>
+                        <td><span class="command">v-delete-user-stats</span></td>
+                        <td>Menghapus statistik pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>40</td>
+                        <td><span class="command">v-get-user-salt</span></td>
+                        <td>Mendapatkan salt pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>41</td>
+                        <td><span class="command">v-get-user-value</span></td>
+                        <td>Mendapatkan nilai pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>42</td>
+                        <td><span class="command">v-list-user</span></td>
+                        <td>Menampilkan data pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>43</td>
+                        <td><span class="command">v-list-user-auth-log</span></td>
+                        <td>Menampilkan log autentikasi</td>
+                    </tr>
+                    <tr>
+                        <td>44</td>
+                        <td><span class="command">v-list-user-backup</span></td>
+                        <td>Menampilkan backup pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>45</td>
+                        <td><span class="command">v-list-user-backup-exclusions</span></td>
+                        <td>Menampilkan pengecualian backup</td>
+                    </tr>
+                    <tr>
+                        <td>46</td>
+                        <td><span class="command">v-list-user-backup-restic</span></td>
+                        <td>Menampilkan backup restic</td>
+                    </tr>
+                    <tr>
+                        <td>47</td>
+                        <td><span class="command">v-list-user-backups</span></td>
+                        <td>Menampilkan semua backup</td>
+                    </tr>
+                    <tr>
+                        <td>48</td>
+                        <td><span class="command">v-list-user-backups-restic</span></td>
+                        <td>Menampilkan backup restic</td>
+                    </tr>
+                    <tr>
+                        <td>49</td>
+                        <td><span class="command">v-list-user-files-restic</span></td>
+                        <td>Menampilkan file restic</td>
+                    </tr>
+                    <tr>
+                        <td>50</td>
+                        <td><span class="command">v-list-user-ips</span></td>
+                        <td>Menampilkan IP pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>51</td>
+                        <td><span class="command">v-list-user-log</span></td>
+                        <td>Menampilkan log pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>52</td>
+                        <td><span class="command">v-list-user-notifications</span></td>
+                        <td>Menampilkan notifikasi</td>
+                    </tr>
+                    <tr>
+                        <td>53</td>
+                        <td><span class="command">v-list-user-ns</span></td>
+                        <td>Menampilkan nameserver pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>54</td>
+                        <td><span class="command">v-list-user-package</span></td>
+                        <td>Menampilkan paket pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>55</td>
+                        <td><span class="command">v-list-user-packages</span></td>
+                        <td>Menampilkan semua paket</td>
+                    </tr>
+                    <tr>
+                        <td>56</td>
+                        <td><span class="command">v-list-user-ssh-key</span></td>
+                        <td>Menampilkan kunci SSH</td>
+                    </tr>
+                    <tr>
+                        <td>57</td>
+                        <td><span class="command">v-list-user-stats</span></td>
+                        <td>Menampilkan statistik pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>58</td>
+                        <td><span class="command">v-list-users</span></td>
+                        <td>Menampilkan semua pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>59</td>
+                        <td><span class="command">v-list-users-stats</span></td>
+                        <td>Menampilkan statistik semua pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>60</td>
+                        <td><span class="command">v-rebuild-user</span></td>
+                        <td>Membangun ulang pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>61</td>
+                        <td><span class="command">v-rebuild-users</span></td>
+                        <td>Membangun ulang semua pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>62</td>
+                        <td><span class="command">v-rename-user-package</span></td>
+                        <td>Mengubah nama paket pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>63</td>
+                        <td><span class="command">v-suspend-user</span></td>
+                        <td>Menangguhkan pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>64</td>
+                        <td><span class="command">v-unsuspend-user</span></td>
+                        <td>Mengaktifkan kembali pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>65</td>
+                        <td><span class="command">v-update-user-backup-exclusions</span></td>
+                        <td>Update pengecualian backup</td>
+                    </tr>
+                    <tr>
+                        <td>66</td>
+                        <td><span class="command">v-update-user-cgroup</span></td>
+                        <td>Update cgroup pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>67</td>
+                        <td><span class="command">v-update-user-counters</span></td>
+                        <td>Update counter pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>68</td>
+                        <td><span class="command">v-update-user-disk</span></td>
+                        <td>Update penggunaan disk</td>
+                    </tr>
+                    <tr>
+                        <td>69</td>
+                        <td><span class="command">v-update-user-package</span></td>
+                        <td>Update paket pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>70</td>
+                        <td><span class="command">v-update-user-quota</span></td>
+                        <td>Update kuota pengguna</td>
+                    </tr>
+                    <tr>
+                        <td>71</td>
+                        <td><span class="command">v-update-user-stats</span></td>
+                        <td>Update statistik pengguna</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <footer>
+            <p>&copy; 2023 Dokumentasi Perintah Hestia CP</p>
+        </footer>
+    </div>
+</body>
+</html>

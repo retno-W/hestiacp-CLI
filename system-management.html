@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Management - Dokumentasi Perintah Hestia CP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 25px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-link:hover {
+            color: #2980b9;
+        }
+        .back-link::before {
+            content: "← ";
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .command {
+            font-family: monospace;
+            background-color: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #e83e8c;
+        }
+        .category-description {
+            margin-bottom: 25px;
+            color: #7f8c8d;
+            text-align: center;
+            font-style: italic;
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">Kembali ke Beranda</a>
+        
+        <h1>System Management</h1>
+        
+        <p class="category-description">Perintah untuk manajemen sistem di Hestia Control Panel</p>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Perintah</th>
+                        <th>Fungsi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><span class="command">v-add-sys-api-ip</span></td>
+                        <td>Menambahkan IP API sistem</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><span class="command">v-add-sys-cgroups</span></td>
+                        <td>Menambahkan cgroups</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><span class="command">v-add-sys-dependencies</span></td>
+                        <td>Menambahkan dependensi</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><span class="command">v-add-sys-filemanager</span></td>
+                        <td>Mengaktifkan file manager</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><span class="command">v-add-sys-firewall</span></td>
+                        <td>Mengaktifkan firewall</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><span class="command">v-add-sys-ip</span></td>
+                        <td>Menambahkan IP sistem</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><span class="command">v-add-sys-pma-sso</span></td>
+                        <td>Mengaktifkan phpMyAdmin SSO</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td><span class="command">v-add-sys-quota</span></td>
+                        <td>Mengaktifkan kuota sistem</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td><span class="command">v-add-sys-roundcube</span></td>
+                        <td>Mengaktifkan Roundcube</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td><span class="command">v-add-sys-sftp-jail</span></td>
+                        <td>Menambahkan SFTP jail</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td><span class="command">v-add-sys-smtp</span></td>
+                        <td>Mengaktifkan SMTP</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td><span class="command">v-add-sys-smtp-relay</span></td>
+                        <td>Menambahkan SMTP relay</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td><span class="command">v-add-sys-snappymail</span></td>
+                        <td>Mengaktifkan SnappyMail</td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td><span class="command">v-add-sys-ssh-jail</span></td>
+                        <td>Menambahkan SSH jail</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td><span class="command">v-add-sys-web-terminal</span></td>
+                        <td>Mengaktifkan web terminal</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td><span class="command">v-change-sys-api</span></td>
+                        <td>Mengubah API sistem</td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td><span class="command">v-change-sys-config-value</span></td>
+                        <td>Mengubah nilai config</td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td><span class="command">v-change-sys-db-alias</span></td>
+                        <td>Mengubah alias database</td>
+                    </tr>
+                    <tr>
+                        <td>19</td>
+                        <td><span class="command">v-change-sys-demo-mode</span></td>
+                        <td>Mengubah mode demo</td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td><span class="command">v-change-sys-hestia-ssl</span></td>
+                        <td>Mengubah SSL Hestia</td>
+                    </tr>
+                    <tr>
+                        <td>21</td>
+                        <td><span class="command">v-change-sys-hostname</span></td>
+                        <td>Mengubah hostname</td>
+                    </tr>
+                    <tr>
+                        <td>22</td>
+                        <td><span class="command">v-change-sys-ip-name</span></td>
+                        <td>Mengubah nama IP</td>
+                    </tr>
+                    <tr>
+                        <td>23</td>
+                        <td><span class="command">v-change-sys-ip-nat</span></td>
+                        <td>Mengubah NAT IP</td>
+                    </tr>
+                    <tr>
+                        <td>24</td>
+                        <td><span class="command">v-change-sys-ip-owner</span></td>
+                        <td>Mengubah pemilik IP</td>
+                    </tr>
+                    <tr>
+                        <td>25</td>
+                        <td><span class="command">v-change-sys-ip-status</span></td>
+                        <td>Mengubah status IP</td>
+                    </tr>
+                    <tr>
+                        <td>26</td>
+                        <td><span class="command">v-change-sys-language</span></td>
+                        <td>Mengubah bahasa sistem</td>
+                    </tr>
+                    <tr>
+                        <td>27</td>
+                        <td><span class="command">v-change-sys-php</span></td>
+                        <td>Mengubah versi PHP</td>
+                    </tr>
+                    <tr>
+                        <td>28</td>
+                        <td><span class="command">v-change-sys-port</span></td>
+                        <td>Mengubah port sistem</td>
+                    </tr>
+                    <tr>
+                        <td>29</td>
+                        <td><span class="command">v-change-sys-release</span></td>
+                        <td>Mengubah release sistem</td>
+                    </tr>
+                    <tr>
+                        <td>30</td>
+                        <td><span class="command">v-change-sys-service-config</span></td>
+                        <td>Mengubah config service</td>
+                    </tr>
+                    <tr>
+                        <td>31</td>
+                        <td><span class="command">v-change-sys-timezone</span></td>
+                        <td>Mengubah timezone</td>
+                    </tr>
+                    <tr>
+                        <td>32</td>
+                        <td><span class="command">v-change-sys-web-terminal-port</span></td>
+                        <td>Mengubah port web terminal</td>
+                    </tr>
+                    <tr>
+                        <td>33</td>
+                        <td><span class="command">v-change-sys-webmail</span></td>
+                        <td>Mengubah webmail</td>
+                    </tr>
+                    <tr>
+                        <td>34</td>
+                        <td><span class="command">v-delete-sys-api-ip</span></td>
+                        <td>Menghapus IP API</td>
+                    </tr>
+                    <tr>
+                        <td>35</td>
+                        <td><span class="command">v-delete-sys-cgroups</span></td>
+                        <td>Menghapus cgroups</td>
+                    </tr>
+                    <tr>
+                        <td>36</td>
+                        <td><span class="command">v-delete-sys-filemanager</span></td>
+                        <td>Menonaktifkan file manager</td>
+                    </tr>
+                    <tr>
+                        <td>37</td>
+                        <td><span class="command">v-delete-sys-firewall</span></td>
+                        <td>Menonaktifkan firewall</td>
+                    </tr>
+                    <tr>
+                        <td>38</td>
+                        <td><span class="command">v-delete-sys-ip</span></td>
+                        <td>Menghapus IP sistem</td>
+                    </tr>
+                    <tr>
+                        <td>39</td>
+                        <td><span class="command">v-delete-sys-pma-sso</span></td>
+                        <td>Menonaktifkan phpMyAdmin SSO</td>
+                    </tr>
+                    <tr>
+                        <td>40</td>
+                        <td><span class="command">v-delete-sys-quota</span></td>
+                        <td>Menonaktifkan kuota</td>
+                    </tr>
+                    <tr>
+                        <td>41</td>
+                        <td><span class="command">v-delete-sys-sftp-jail</span></td>
+                        <td>Menghapus SFTP jail</td>
+                    </tr>
+                    <tr>
+                        <td>42</td>
+                        <td><span class="command">v-delete-sys-smtp</span></td>
+                        <td>Menonaktifkan SMTP</td>
+                    </tr>
+                    <tr>
+                        <td>43</td>
+                        <td><span class="command">v-delete-sys-smtp-relay</span></td>
+                        <td>Menghapus SMTP relay</td>
+                    </tr>
+                    <tr>
+                        <td>44</td>
+                        <td><span class="command">v-delete-sys-snappymail</span></td>
+                        <td>Menonaktifkan SnappyMail</td>
+                    </tr>
+                    <tr>
+                        <td>45</td>
+                        <td><span class="command">v-delete-sys-ssh-jail</span></td>
+                        <td>Menghapus SSH jail</td>
+                    </tr>
+                    <tr>
+                        <td>46</td>
+                        <td><span class="command">v-delete-sys-web-terminal</span></td>
+                        <td>Menonaktifkan web terminal</td>
+                    </tr>
+                    <tr>
+                        <td>47</td>
+                        <td><span class="command">v-get-sys-timezone</span></td>
+                        <td>Mendapatkan timezone</td>
+                    </tr>
+                    <tr>
+                        <td>48</td>
+                        <td><span class="command">v-get-sys-timezones</span></td>
+                        <td>Mendapatkan daftar timezone</td>
+                    </tr>
+                    <tr>
+                        <td>49</td>
+                        <td><span class="command">v-list-sys-clamd-config</span></td>
+                        <td>Menampilkan config clamd</td>
+                    </tr>
+                    <tr>
+                        <td>50</td>
+                        <td><span class="command">v-list-sys-config</span></td>
+                        <td>Menampilkan config sistem</td>
+                    </tr>
+                    <tr>
+                        <td>51</td>
+                        <td><span class="command">v-list-sys-cpu-status</span></td>
+                        <td>Menampilkan status CPU</td>
+                    </tr>
+                    <tr>
+                        <td>52</td>
+                        <td><span class="command">v-list-sys-db-status</span></td>
+                        <td>Menampilkan status database</td>
+                    </tr>
+                    <tr>
+                        <td>53</td>
+                        <td><span class="command">v-list-sys-disk-status</span></td>
+                        <td>Menampilkan status disk</td>
+                    </tr>
+                    <tr>
+                        <td>54</td>
+                        <td><span class="command">v-list-sys-dns-status</span></td>
+                        <td>Menampilkan status DNS</td>
+                    </tr>
+                    <tr>
+                        <td>55</td>
+                        <td><span class="command">v-list-sys-dovecot-config</span></td>
+                        <td>Menampilkan config Dovecot</td>
+                    </tr>
+                    <tr>
+                        <td>56</td>
+                        <td><span class="command">v-list-sys-hestia-autoupdate</span></td>
+                        <td>Menampilkan auto update</td>
+                    </tr>
+                    <tr>
+                        <td>57</td>
+                        <td><span class="command">v-list-sys-hestia-ssl</span></td>
+                        <td>Menampilkan SSL Hestia</td>
+                    </tr>
+                    <tr>
+                        <td>58</td>
+                        <td><span class="command">v-list-sys-hestia-updates</span></td>
+                        <td>Menampilkan update Hestia</td>
+                    </tr>
+                    <tr>
+                        <td>59</td>
+                        <td><span class="command">v-list-sys-info</span></td>
+                        <td>Menampilkan info sistem</td>
+                    </tr>
+                    <tr>
+                        <td>60</td>
+                        <td><span class="command">v-list-sys-interfaces</span></td>
+                        <td>Menampilkan interface</td>
+                    </tr>
+                    <tr>
+                        <td>61</td>
+                        <td><span class="command">v-list-sys-ip</span></td>
+                        <td>Menampilkan IP sistem</td>
+                    </tr>
+                    <tr>
+                        <td>62</td>
+                        <td><span class="command">v-list-sys-ips</span></td>
+                        <td>Menampilkan semua IP</td>
+                    </tr>
+                    <tr>
+                        <td>63</td>
+                        <td><span class="command">v-list-sys-languages</span></td>
+                        <td>Menampilkan bahasa</td>
+                    </tr>
+                    <tr>
+                        <td>64</td>
+                        <td><span class="command">v-list-sys-mail-status</span></td>
+                        <td>Menampilkan status mail</td>
+                    </tr>
+                    <tr>
+                        <td>65</td>
+                        <td><span class="command">v-list-sys-memory-status</span></td>
+                        <td>Menampilkan status memory</td>
+                    </tr>
+                    <tr>
+                        <td>66</td>
+                        <td><span class="command">v-list-sys-mysql-config</span></td>
+                        <td>Menampilkan config MySQL</td>
+                    </tr>
+                    <tr>
+                        <td>67</td>
+                        <td><span class="command">v-list-sys-network-status</span></td>
+                        <td>Menampilkan status network</td>
+                    </tr>
+                    <tr>
+                        <td>68</td>
+                        <td><span class="command">v-list-sys-nginx-config</span></td>
+                        <td>Menampilkan config Nginx</td>
+                    </tr>
+                    <tr>
+                        <td>69</td>
+                        <td><span class="command">v-list-sys-pgsql-config</span></td>
+                        <td>Menampilkan config PostgreSQL</td>
+                    </tr>
+                    <tr>
+                        <td>70</td>
+                        <td><span class="command">v-list-sys-php</span></td>
+                        <td>Menampilkan versi PHP</td>
+                    </tr>
+                    <tr>
+                        <td>71</td>
+                        <td><span class="command">v-list-sys-php-config</span></td>
+                        <td>Menampilkan config PHP</td>
+                    </tr>
+                    <tr>
+                        <td>72</td>
+                        <td><span class="command">v-list-sys-proftpd-config</span></td>
+                        <td>Menampilkan config ProFTPD</td>
+                    </tr>
+                    <tr>
+                        <td>73</td>
+                        <td><span class="command">v-list-sys-rrd</span></td>
+                        <td>Menampilkan RRD</td>
+                    </tr>
+                    <tr>
+                        <td>74</td>
+                        <td><span class="command">v-list-sys-services</span></td>
+                        <td>Menampilkan services</td>
+                    </tr>
+                    <tr>
+                        <td>75</td>
+                        <td><span class="command">v-list-sys-shells</span></td>
+                        <td>Menampilkan shells</td>
+                    </tr>
+                    <tr>
+                        <td>76</td>
+                        <td><span class="command">v-list-sys-spamd-config</span></td>
+                        <td>Menampilkan config SpamD</td>
+                    </tr>
+                    <tr>
+                        <td>77</td>
+                        <td><span class="command">v-list-sys-sshd-port</span></td>
+                        <td>Menampilkan port SSH</td>
+                    </tr>
+                    <tr>
+                        <td>78</td>
+                        <td><span class="command">v-list-sys-themes</span></td>
+                        <td>Menampilkan tema</td>
+                    </tr>
+                    <tr>
+                        <td>79</td>
+                        <td><span class="command">v-list-sys-users</span></td>
+                        <td>Menampilkan pengguna sistem</td>
+                    </tr>
+                    <tr>
+                        <td>80</td>
+                        <td><span class="command">v-list-sys-vsftpd-config</span></td>
+                        <td>Menampilkan config vsftpd</td>
+                    </tr>
+                    <tr>
+                        <td>81</td>
+                        <td><span class="command">v-list-sys-web-status</span></td>
+                        <td>Menampilkan status web</td>
+                    </tr>
+                    <tr>
+                        <td>82</td>
+                        <td><span class="command">v-list-sys-webmail</span></td>
+                        <td>Menampilkan webmail</td>
+                    </tr>
+                    <tr>
+                        <td>83</td>
+                        <td><span class="command">v-repair-sys-config</span></td>
+                        <td>Memperbaiki config sistem</td>
+                    </tr>
+                    <tr>
+                        <td>84</td>
+                        <td><span class="command">v-restart-system</span></td>
+                        <td>Restart sistem</td>
+                    </tr>
+                    <tr>
+                        <td>85</td>
+                        <td><span class="command">v-update-sys-defaults</span></td>
+                        <td>Update default sistem</td>
+                    </tr>
+                    <tr>
+                        <td>86</td>
+                        <td><span class="command">v-update-sys-hestia</span></td>
+                        <td>Update Hestia</td>
+                    </tr>
+                    <tr>
+                        <td>87</td>
+                        <td><span class="command">v-update-sys-hestia-all</span></td>
+                        <td>Update semua Hestia</td>
+                    </tr>
+                    <tr>
+                        <td>88</td>
+                        <td><span class="command">v-update-sys-hestia-git</span></td>
+                        <td>Update Hestia dari git</td>
+                    </tr>
+                    <tr>
+                        <td>89</td>
+                        <td><span class="command">v-update-sys-ip</span></td>
+                        <td>Update IP sistem</td>
+                    </tr>
+                    <tr>
+                        <td>90</td>
+                        <td><span class="command">v-update-sys-ip-counters</span></td>
+                        <td>Update counter IP</td>
+                    </tr>
+                    <tr>
+                        <td>91</td>
+                        <td><span class="command">v-update-sys-queue</span></td>
+                        <td>Update antrian sistem</td>
+                    </tr>
+                    <tr>
+                        <td>92</td>
+                        <td><span class="command">v-update-sys-rrd</span></td>
+                        <td>Update RRD sistem</td>
+                    </tr>
+                    <tr>
+                        <td>93</td>
+                        <td><span class="command">v-update-sys-rrd-apache2</span></td>
+                        <td>Update RRD Apache2</td>
+                    </tr>
+                    <tr>
+                        <td>94</td>
+                        <td><span class="command">v-update-sys-rrd-ftp</span></td>
+                        <td>Update RRD FTP</td>
+                    </tr>
+                    <tr>
+                        <td>95</td>
+                        <td><span class="command">v-update-sys-rrd-httpd</span></td>
+                        <td>Update RRD HTTPD</td>
+                    </tr>
+                    <tr>
+                        <td>96</td>
+                        <td><span class="command">v-update-sys-rrd-la</span></td>
+                        <td>Update RRD load average</td>
+                    </tr>
+                    <tr>
+                        <td>97</td>
+                        <td><span class="command">v-update-sys-rrd-mail</span></td>
+                        <td>Update RRD mail</td>
+                    </tr>
+                    <tr>
+                        <td>98</td>
+                        <td><span class="command">v-update-sys-rrd-mem</span></td>
+                        <td>Update RRD memory</td>
+                    </tr>
+                    <tr>
+                        <td>99</td>
+                        <td><span class="command">v-update-sys-rrd-mysql</span></td>
+                        <td>Update RRD MySQL</td>
+                    </tr>
+                    <tr>
+                        <td>100</td>
+                        <td><span class="command">v-update-sys-rrd-net</span></td>
+                        <td>Update RRD network</td>
+                    </tr>
+                    <tr>
+                        <td>101</td>
+                        <td><span class="command">v-update-sys-rrd-nginx</span></td>
+                        <td>Update RRD Nginx</td>
+                    </tr>
+                    <tr>
+                        <td>102</td>
+                        <td><span class="command">v-update-sys-rrd-pgsql</span></td>
+                        <td>Update RRD PostgreSQL</td>
+                    </tr>
+                    <tr>
+                        <td>103</td>
+                        <td><span class="command">v-update-sys-rrd-ssh</span></td>
+                        <td>Update RRD SSH</td>
+                    </tr>
+                    <tr>
+                        <td>104</td>
+                        <td><span class="command">v-refresh-sys-theme</span></td>
+                        <td>Refresh tema sistem</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <footer>
+            <p>&copy; 2023 Dokumentasi Perintah Hestia CP</p>
+        </footer>
+    </div>
+</body>
+</html>
